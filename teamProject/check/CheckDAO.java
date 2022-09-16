@@ -22,7 +22,7 @@ public class CheckDAO {
 	 * @return list - 예약 목록
 	 * @throws Exception
 	 */
-	public List<CheckVO> checkList(String memId) throws Exception {
+	public List<CheckVO> printList(String memId) throws Exception {
 		// 0. 드라이버 로딩
 		DriverManager.registerDriver(new OracleDriver());
 
@@ -34,6 +34,7 @@ public class CheckDAO {
 		builder.append("SELECT ");
 		builder.append("    a.reserv_id, ");
 		builder.append("    a.pass_name, ");
+		builder.append("    a.course_id, ");
 		builder.append("    a.seat_no, ");
 		builder.append("    b.dep_location, ");
 		builder.append("    b.dep_date, ");
@@ -67,6 +68,7 @@ public class CheckDAO {
 		while (resultSet.next()) {
 			String reservId = resultSet.getString("reserv_id");
 			String passName = resultSet.getString("pass_name");
+			String courseId = resultSet.getString("course_id");
 			String seatNo = resultSet.getString("seat_no");
 			String depLocation = resultSet.getString("dep_location");
 			String depDate = DataFormatUtil.dateFormat(resultSet.getString("dep_date"));
@@ -75,7 +77,7 @@ public class CheckDAO {
 			String arrTime = resultSet.getString("arr_time");
 			String airline = resultSet.getString("airline");
 			String airplaneId = resultSet.getString("airplane_id");
-			list.add(new CheckVO(reservId, passName, seatNo, depLocation, depDate, depTime, airportId, arrTime, airline, airplaneId));
+			list.add(new CheckVO(reservId, passName, courseId, seatNo, depLocation, depDate, depTime, airportId, arrTime, airline, airplaneId));
 		}
 
 		// 6. 자원 반납
@@ -92,7 +94,7 @@ public class CheckDAO {
 	 * @return vo - 예약 세부 내역
 	 * @throws Exception
 	 */
-	public CheckVO checkRes(String typeReservId) throws Exception {
+	public CheckVO printReservDetail(String typeReservId) throws Exception {
 		// 0. 드라이버 로딩
 		DriverManager.registerDriver(new OracleDriver());
 
@@ -107,6 +109,7 @@ public class CheckDAO {
 		builder.append("    a.pass_name, ");
 		builder.append("    a.pass_phone, ");
 		builder.append("    a.pass_reg, ");
+		builder.append("    a.course_id, ");
 		builder.append("    a.seat_no, ");
 		builder.append("    b.dep_location, ");
 		builder.append("    b.dep_date, ");
@@ -150,6 +153,7 @@ public class CheckDAO {
 			String passName = resultSet.getString("pass_name");
 			String passPhone = resultSet.getString("pass_phone");
 			String passReg = resultSet.getString("pass_reg");
+			String courseId = resultSet.getString("course_id");
 			String seatNo = resultSet.getString("seat_no");
 			String depLocation = resultSet.getString("dep_location");
 			String depDate = DataFormatUtil.dateFormat(resultSet.getString("dep_date"));
@@ -162,7 +166,7 @@ public class CheckDAO {
 			String account = resultSet.getString("account");
 			String bank = resultSet.getString("bank");
 			int mileage = resultSet.getInt("mileage");
-			vo = new CheckVO(reservId, memId, passName, passPhone, passReg, seatNo, depLocation, depDate, depTime, airline, airportId, arrTime, airplaneId, price, account, bank, mileage);
+			vo = new CheckVO(reservId, memId, passName, passPhone, passReg, courseId, seatNo, depLocation, depDate, depTime, airline, airportId, arrTime, airplaneId, price, account, bank, mileage);
 		}
 
 		// 6. 자원 반납

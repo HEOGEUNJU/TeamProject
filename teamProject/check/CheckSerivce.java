@@ -3,14 +3,20 @@ package teamProject.check;
 import java.util.List;
 
 public class CheckSerivce {
+	private static CheckSerivce instance = new CheckSerivce();
+	public static CheckSerivce getInstance() {
+		return instance;
+	}
+	private CheckSerivce() {}
+	
 	CheckDAO dao = new CheckDAO();
 
-	public List<CheckVO> checkList(String memId) throws Exception {
-		return dao.checkList(memId);
+	public List<CheckVO> printList(String memId) throws Exception {
+		return dao.printList(memId);
 	}
 
-	public CheckVO checkRes(String typeReservId) throws Exception {
-		return dao.checkRes(typeReservId);
+	public CheckVO printReservDetail(String typeReservId) throws Exception {
+		return dao.printReservDetail(typeReservId);
 	}
 
 }

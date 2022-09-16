@@ -1,13 +1,12 @@
 package teamProject.check;
 
-import java.sql.Date;
-
-public class CheckVO {
+public class CheckVO { // 항공편 id 추가
 	private String reservId;
 	private String memId;
 	private String passName;
 	private String passPhone;
 	private String passReg;
+	private String courseId;
 	private String seatNo;
 	private String depLocation;
 	private String depDate;
@@ -59,6 +58,14 @@ public class CheckVO {
 
 	public void setPassReg(String passReg) {
 		this.passReg = passReg;
+	}
+
+	public String getCourseId() {
+		return courseId;
+	}
+
+	public void setCourseId(String courseId) {
+		this.courseId = courseId;
 	}
 
 	public String getSeatNo() {
@@ -157,10 +164,11 @@ public class CheckVO {
 		this.mileage = mileage;
 	}
 
-	public CheckVO(String reservId, String passName, String seatNo, String depLocation, String depDate, String depTime,
-			String airportId, String arrTime, String airline, String airplaneId) {
+	public CheckVO(String reservId, String passName, String courseId, String seatNo, String depLocation, String depDate,
+			String depTime, String airportId, String arrTime, String airline, String airplaneId) {
 		this.reservId = reservId;
 		this.passName = passName;
+		this.courseId = courseId;
 		this.seatNo = seatNo;
 		this.depLocation = depLocation;
 		this.depDate = depDate;
@@ -171,14 +179,15 @@ public class CheckVO {
 		this.airplaneId = airplaneId;
 	}
 
-	public CheckVO(String reservId, String memId, String passName, String passPhone, String passReg, String seatNo,
-			String depLocation, String depDate, String depTime, String airportId, String arrTime, String airline, String airplaneId,
-			int price, String account, String bank, int mileage) {
+	public CheckVO(String reservId, String memId, String passName, String passPhone, String passReg, String courseId,
+			String seatNo, String depLocation, String depDate, String depTime, String airportId, String arrTime,
+			String airline, String airplaneId, int price, String account, String bank, int mileage) {
 		this.reservId = reservId;
 		this.memId = memId;
 		this.passName = passName;
 		this.passPhone = passPhone;
 		this.passReg = passReg;
+		this.courseId = courseId;
 		this.seatNo = seatNo;
 		this.depLocation = depLocation;
 		this.depDate = depDate;

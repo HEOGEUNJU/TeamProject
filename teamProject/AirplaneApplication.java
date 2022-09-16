@@ -1,18 +1,10 @@
 package teamProject;
 
-import java.util.Scanner;
-
-import teamProject.cancel.CancelController;
-
-import teamProject.check.CheckController;
-
 public class AirplaneApplication {
 	public static void main(String[] args) throws Exception {
 		AirplaneView airplaneView = new AirplaneView();
-		CancelController cancleController = new CancelController();
-		CheckController checkController = new CheckController();
-		Scanner scanner = new Scanner(System.in);
-		
+
+		boolean isRun  = true;
 		while (true) {
 			// 로그인
 
@@ -30,10 +22,7 @@ public class AirplaneApplication {
 					break;
 				case 3:
 					// 예약확인
-					airplaneView.CheckList(checkController);
-					airplaneView.Choice();
-					airplaneView.CheckRes(checkController, scanner);
-					airplaneView.Choice();
+					airplaneView.check();
 					break;
 				case 0:
 					// 프로그램 종료
